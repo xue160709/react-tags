@@ -16,15 +16,15 @@ A highly customizable and accessible React tag component that supports multiple 
 ## Installation
 
 ```bash
-npm install @your-package/react-tag
+npm install @xue160709/react-tag
 # or
-yarn add @your-package/react-tag
+yarn add @xue160709/react-tag
 ```
 
 ## Basic Usage
 
 ```tsx
-import { Tag } from '@your-package/react-tag';
+import { Tag } from '@xue160709/react-tag';
 
 function App() {
   return (
