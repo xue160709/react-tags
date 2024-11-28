@@ -33,6 +33,8 @@ interface TagProps {
   fontSize?: string | number;
   fontWeight?: string | number;
   italic?: boolean;
+  borderWidth?: number | string;
+  noBorder?: boolean;
 }
 
 const Tag: React.FC<TagProps> = ({ 
@@ -54,6 +56,8 @@ const Tag: React.FC<TagProps> = ({
   fontSize,
   fontWeight,
   italic = false,
+  borderWidth,
+  noBorder = false,
 }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [isFading, setIsFading] = useState(false);
@@ -102,6 +106,12 @@ const Tag: React.FC<TagProps> = ({
       return '8px 16px';
     };
 
+    const calculateCloseButtonSize = () => {
+      if (!fontSize) return undefined;
+      const fontSizeNum = parseInt(fontSize.toString());
+      return `${fontSizeNum * 1.2}px`;
+    };
+
     const baseStyle: React.CSSProperties = {
       borderRadius: borderRadius,
       fontSize: fontSize,
@@ -109,7 +119,10 @@ const Tag: React.FC<TagProps> = ({
       padding: calculatePadding(),
       lineHeight: fontSize ? `${parseInt(fontSize.toString()) * 1.4}px` : undefined,
       fontStyle: italic ? 'italic' : undefined,
-    };
+      border: noBorder ? 'none' : undefined,
+      borderWidth: !noBorder && borderWidth ? borderWidth : undefined,
+      '--close-button-size': calculateCloseButtonSize(),
+    } as React.CSSProperties;
 
     if (gradient) {
       return {
@@ -123,9 +136,10 @@ const Tag: React.FC<TagProps> = ({
     if (color === 'custom' && customColor) {
       return {
         ...baseStyle,
-        backgroundColor: `${customColor}20`,
+        backgroundColor: 'white',
         color: customColor,
-        border: `1px solid ${customColor}40`,
+        border: noBorder ? 'none' : `${borderWidth || 1}px solid ${customColor}40`,
+        boxShadow: noBorder ? 'none' : undefined,
       };
     }
 

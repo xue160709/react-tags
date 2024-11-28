@@ -165,40 +165,40 @@ export default function Home() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-xl font-semibold mb-4">不同圆角样式</h2>
+          <h2 className="text-xl font-semibold mb-4">Different Border Radius Styles</h2>
           <div className="flex flex-wrap gap-2">
             <Tag 
-              text="默认圆角" 
+              text="Default Radius" 
               color="blue" 
             />
             <Tag 
-              text="无圆角" 
+              text="No Radius" 
               color="green" 
               borderRadius={0}
             />
             <Tag 
-              text="大圆角" 
+              text="Large Radius" 
               color="purple" 
               borderRadius={12}
             />
             <Tag 
-              text="超大圆角" 
+              text="Large Radius" 
               color="pink" 
               borderRadius={20}
             />
             <Tag 
-              text="圆形标签" 
+              text="Circular Tag" 
               color="orange" 
               borderRadius="50%"
             />
             <Tag 
-              text="自定义圆角" 
+              text="Custom Radius" 
               color="custom"
               customColor="#1677ff"
               borderRadius="8px 20px"
             />
             <Tag 
-              text="带图标圆形" 
+              text="Circular Tag with Icon" 
               color="teal"
               icon={<FiStar className="mr-1" />}
               borderRadius="50px"
@@ -207,23 +207,23 @@ export default function Home() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-xl font-semibold mb-4">组合样式展示</h2>
+          <h2 className="text-xl font-semibold mb-4">Combination Styles</h2>
           <div className="flex flex-wrap gap-2">
             <Tag 
-              text="可关闭圆角标签" 
+              text="Closable Tag with Large Radius" 
               color="indigo" 
               borderRadius={16}
               onClose={() => alert('Tag closed')}
             />
             <Tag 
-              text="自定义颜色圆角" 
+              text="Custom Color Radius" 
               color="custom"
               customColor="#f50"
               borderRadius={25}
               icon={<FiTag className="mr-1" />}
             />
             <Tag 
-              text="可点击大圆角" 
+              text="Clickable Large Radius" 
               color="blue"
               borderRadius={30}
               clickable
@@ -233,42 +233,42 @@ export default function Home() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-xl font-semibold mb-4">关闭效果演示</h2>
+          <h2 className="text-xl font-semibold mb-4">Fade Out Effect</h2>
           <div className="flex flex-wrap gap-2">
             <Tag 
-              text="渐变消失效果" 
+              text="Fade Out Effect" 
               color="blue" 
               fadeOut={true}
-              onClose={() => console.log('渐变消失')}
+              onClose={() => console.log('Fade Out')}
             />
             <Tag 
-              text="直接消失效果" 
+              text="Direct Fade Out" 
               color="red" 
               fadeOut={false}
-              onClose={() => console.log('直接消失')}
+              onClose={() => console.log('Direct Fade Out')}
             />
             <Tag 
-              text="带图标渐变消失" 
+              text="Fade Out with Icon" 
               color="purple" 
               fadeOut={true}
               icon={<FiStar className="mr-1" />}
-              onClose={() => console.log('带图标渐变消失')}
+              onClose={() => console.log('Fade Out with Icon')}
             />
             <Tag 
-              text="自定义颜色渐变消失" 
+              text="Custom Color Fade Out" 
               color="custom"
               customColor="#1677ff"
               fadeOut={true}
-              onClose={() => console.log('自定义颜色渐变消失')}
+              onClose={() => console.log('Custom Color Fade Out')}
             />
           </div>
         </section>
 
         <section className="mb-8">
-          <h2 className="text-xl font-semibold mb-4">自定义渐变效果标签</h2>
+          <h2 className="text-xl font-semibold mb-4">Custom Gradient Effect</h2>
           <div className="flex flex-wrap gap-2">
             <Tag 
-              text="自定义蓝色渐变" 
+              text="Custom Blue Gradient" 
               gradient={{
                 from: '#1677ff',
                 to: '#69b1ff',
@@ -277,7 +277,7 @@ export default function Home() {
               clickable
             />
             <Tag 
-              text="紫色渐变" 
+              text="Purple Gradient" 
               gradient={{
                 from: '#722ED1',
                 to: '#B37FEB',
@@ -286,7 +286,7 @@ export default function Home() {
               clickable
             />
             <Tag 
-              text="日落渐变" 
+              text="Sunset Gradient" 
               gradient={{
                 from: '#FF4D4F',
                 to: '#FFA940',
@@ -295,7 +295,7 @@ export default function Home() {
               clickable
             />
             <Tag 
-              text="极光渐变" 
+              text="Aurora Gradient" 
               gradient={{
                 from: '#13C2C2',
                 to: '#36CFC9',
@@ -307,18 +307,18 @@ export default function Home() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-xl font-semibold mb-4">渐变组合效果</h2>
+          <h2 className="text-xl font-semibold mb-4">Gradient Combination</h2>
           <div className="flex flex-wrap gap-2">
             <Tag 
-              text="可关闭渐变" 
+              text="Closable Gradient" 
               gradient={{
                 from: '#1677ff',
                 to: '#69b1ff'
               }}
-              onClose={() => alert('关闭')}
+              onClose={() => alert('Close')}
             />
             <Tag 
-              text="带图标渐变" 
+              text="Gradient with Icon" 
               gradient={{
                 from: '#722ED1',
                 to: '#B37FEB'
@@ -327,7 +327,7 @@ export default function Home() {
               clickable
             />
             <Tag 
-              text="大尺寸渐变" 
+              text="Large Gradient" 
               gradient={{
                 from: '#FF4D4F',
                 to: '#FFA940'
@@ -339,48 +339,55 @@ export default function Home() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-xl font-semibold mb-4">字体大小与粗细</h2>
+          <h2 className="text-xl font-semibold mb-4">Font Size and Weight</h2>
           <div className="flex flex-wrap gap-2 items-center">
             <Tag 
-              text="小字体标签" 
+              text="Small Font Tag" 
               color="blue" 
               fontSize="12px"
             />
             <Tag 
-              text="默认字体标签" 
+              text="Default Font Tag" 
               color="green" 
             />
             <Tag 
-              text="中等字体" 
+              text="Medium Font Tag" 
               color="purple" 
               fontSize="16px"
             />
             <Tag 
-              text="大字体标签" 
+              text="Large Font Tag" 
               color="pink" 
               fontSize="18px"
             />
             <Tag 
-              text="超大字体" 
+              text="Large Font Tag" 
               color="orange" 
               fontSize="24px"
               fontWeight={600}
             />
             <Tag 
-              text="带图标大字" 
+              text="Large Font Tag with Icon" 
               color="teal"
               fontSize="20px"
               fontWeight={700}
               icon={<FiStar />}
             />
+            <Tag 
+              text="Large Closable Tag" 
+              color="orange" 
+              fontSize="24px"
+              fontWeight={600}
+              onClose={() => alert('Closed!')}
+            />
           </div>
         </section>
 
         <section className="mb-8">
-          <h2 className="text-xl font-semibold mb-4">组合字体效果</h2>
+          <h2 className="text-xl font-semibold mb-4">Combination Font Effect</h2>
           <div className="flex flex-wrap gap-2 items-center">
             <Tag 
-              text="渐变大字" 
+              text="Gradient Large Font Tag" 
               gradient={{
                 from: '#1677ff',
                 to: '#69b1ff'
@@ -389,48 +396,48 @@ export default function Home() {
               fontWeight={600}
             />
             <Tag 
-              text="可关闭大字" 
+              text="Closable Large Font Tag" 
               color="purple"
               fontSize="18px"
               fontWeight={500}
-              onClose={() => alert('关闭')}
+              onClose={() => alert('Close')}
             />
           </div>
         </section>
 
         <section className="mb-8">
-          <h2 className="text-xl font-semibold mb-4">字体样式展示</h2>
+          <h2 className="text-xl font-semibold mb-4">Font Style Display</h2>
           <div className="flex flex-wrap gap-2 items-center">
             <Tag 
-              text="普通标签" 
+              text="Normal Tag" 
               color="blue" 
             />
             <Tag 
-              text="斜体标签" 
+              text="Italic Tag" 
               color="green" 
               italic
             />
             <Tag 
-              text="大号斜体" 
+              text="Large Italic Tag" 
               color="purple" 
               fontSize="18px"
               italic
             />
             <Tag 
-              text="粗体斜体" 
+              text="Bold Italic Tag" 
               color="pink" 
               fontWeight={600}
               italic
             />
             <Tag 
-              text="超大斜体" 
+              text="Large Italic Tag" 
               color="orange" 
               fontSize="24px"
               fontWeight={600}
               italic
             />
             <Tag 
-              text="渐变斜体" 
+              text="Gradient Italic Tag" 
               gradient={{
                 from: '#1677ff',
                 to: '#69b1ff'
@@ -442,27 +449,92 @@ export default function Home() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-xl font-semibold mb-4">组合样式效果</h2>
+          <h2 className="text-xl font-semibold mb-4">Combination Style</h2>
           <div className="flex flex-wrap gap-2 items-center">
             <Tag 
-              text="斜体带图标" 
+              text="Italic with Icon" 
               color="teal"
               icon={<FiStar />}
               italic
             />
             <Tag 
-              text="可关闭斜体" 
+              text="Closable Italic Tag" 
               color="purple"
               italic
-              onClose={() => alert('关闭')}
+              onClose={() => alert('Close')}
             />
             <Tag 
-              text="自定义斜体" 
+              text="Custom Italic Tag" 
               color="custom"
               customColor="#1677ff"
               fontSize="16px"
               fontWeight={500}
               italic
+            />
+          </div>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-xl font-semibold mb-4">Border Styles</h2>
+          <div className="flex flex-wrap gap-2 items-center">
+            <Tag 
+              text="Default Border" 
+              color="blue" 
+            />
+            <Tag 
+              text="No Border" 
+              color="green" 
+              noBorder
+            />
+            <Tag 
+              text="Thick Border" 
+              color="purple" 
+              borderWidth={2}
+            />
+            <Tag 
+              text="Extra Thick Border" 
+              color="pink" 
+              borderWidth={3}
+            />
+            <Tag 
+              text="Custom Color Thick Border" 
+              color="custom"
+              customColor="#1677ff"
+              borderWidth={2}
+            />
+            <Tag 
+              text="No Border Gradient" 
+              gradient={{
+                from: '#1677ff',
+                to: '#69b1ff'
+              }}
+              noBorder
+            />
+          </div>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-xl font-semibold mb-4">Combined Border Styles</h2>
+          <div className="flex flex-wrap gap-2 items-center">
+            <Tag 
+              text="Thick Border with Icon" 
+              color="teal"
+              borderWidth={2}
+              icon={<FiStar className="mr-1" />}
+            />
+            <Tag 
+              text="No Border Closable" 
+              color="orange"
+              noBorder
+              onClose={() => alert('Close')}
+            />
+            <Tag 
+              text="Custom Border Style" 
+              color="blue"
+              borderWidth={4}
+              borderRadius="10px"
+              fontSize="16px"
+              fontWeight={500}
             />
           </div>
         </section>

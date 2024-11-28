@@ -31,6 +31,8 @@
   font-size: 14px;
   line-height: 1.4;
   transition: all 0.2s;
+  border-style: solid;
+  border-width: 1px;
 }
 
 .tag-fade-out {
@@ -57,13 +59,13 @@
 .tag-blue {
   background-color: #e6f3ff;
   color: #0066cc;
-  border: 1px solid #99ccff;
+  border-color: #99ccff;
 }
 
 .tag-green {
   background-color: #e6fff0;
   color: #00994d;
-  border: 1px solid #99ffcc;
+  border-color: #99ffcc;
 }
 
 .tag-red {
@@ -126,35 +128,27 @@
 
 /* 关闭按钮 */
 .tag-close-button {
+  font-size: var(--close-button-size, 16px);
+  width: var(--close-button-size, 16px);
+  height: var(--close-button-size, 16px);
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  padding: 0;
   margin-left: 4px;
-  min-width: 1em;
-  min-height: 1em;
-  font-size: 0.85em;
-  opacity: 0.5;
-  cursor: pointer;
-  transition: opacity 0.2s;
-  background: none;
   border: none;
-  padding: 0 0 0 4px;
+  background: none;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.2s;
 }
 
-.tag-close-button .close-icon {
-  font-size: 18px;  /* 增大字体大小 */
+.tag-close-button:hover {
+  opacity: 1;
+}
+
+.close-icon {
   line-height: 1;
-  font-weight: bold;
-  display: block;
-}
-
-/* 根据tag大小调整关闭按钮大小 */
-.tag-small .tag-close-button .close-icon {
-  font-size: 16px;
-}
-
-.tag-large .tag-close-button .close-icon {
-  font-size: 20px;
 }
 
 /* 图标 */
@@ -239,4 +233,14 @@
 .tag-gradient.tag-clickable:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 添加边框过渡效果 */
+.tag {
+  transition: all 0.2s ease-in-out, border-width 0.2s ease-in-out;
+}
+
+/* 无边框样式 */
+.tag[style*="border: none"] {
+  box-shadow: none !important;
 } 
