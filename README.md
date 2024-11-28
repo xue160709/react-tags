@@ -117,4 +117,6 @@ The component includes built-in accessibility features:
 
 ## License
 
-MIT © [Your Name]
+MIT © [年份] [版权所有者名称]
+
+查看 [LICENSE](./LICENSE) 文件了解更多详情。
