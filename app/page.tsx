@@ -227,7 +227,7 @@ export default function Home() {
   return (
     <div className="min-h-screen p-8">
       <main className="max-w-3xl mx-auto">
-        <h1 className="text-2xl font-bold mb-8">Tag Component Demo</h1>
+        <h1 className="text-2xl font-bold mb-8">React Tags Component Demo</h1>
         {demoSections.map((section, index) => (
           <DemoBlock key={index} {...section} />
         ))}
