@@ -397,6 +397,75 @@ export default function Home() {
             />
           </div>
         </section>
+
+        <section className="mb-8">
+          <h2 className="text-xl font-semibold mb-4">字体样式展示</h2>
+          <div className="flex flex-wrap gap-2 items-center">
+            <Tag 
+              text="普通标签" 
+              color="blue" 
+            />
+            <Tag 
+              text="斜体标签" 
+              color="green" 
+              italic
+            />
+            <Tag 
+              text="大号斜体" 
+              color="purple" 
+              fontSize="18px"
+              italic
+            />
+            <Tag 
+              text="粗体斜体" 
+              color="pink" 
+              fontWeight={600}
+              italic
+            />
+            <Tag 
+              text="超大斜体" 
+              color="orange" 
+              fontSize="24px"
+              fontWeight={600}
+              italic
+            />
+            <Tag 
+              text="渐变斜体" 
+              gradient={{
+                from: '#1677ff',
+                to: '#69b1ff'
+              }}
+              fontSize="20px"
+              italic
+            />
+          </div>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-xl font-semibold mb-4">组合样式效果</h2>
+          <div className="flex flex-wrap gap-2 items-center">
+            <Tag 
+              text="斜体带图标" 
+              color="teal"
+              icon={<FiStar />}
+              italic
+            />
+            <Tag 
+              text="可关闭斜体" 
+              color="purple"
+              italic
+              onClose={() => alert('关闭')}
+            />
+            <Tag 
+              text="自定义斜体" 
+              color="custom"
+              customColor="#1677ff"
+              fontSize="16px"
+              fontWeight={500}
+              italic
+            />
+          </div>
+        </section>
       </main>
     </div>
   );

@@ -32,6 +32,7 @@ interface TagProps {
   gradient?: GradientConfig;
   fontSize?: string | number;
   fontWeight?: string | number;
+  italic?: boolean;
 }
 
 const Tag: React.FC<TagProps> = ({ 
@@ -52,6 +53,7 @@ const Tag: React.FC<TagProps> = ({
   gradient,
   fontSize,
   fontWeight,
+  italic = false,
 }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [isFading, setIsFading] = useState(false);
@@ -106,6 +108,7 @@ const Tag: React.FC<TagProps> = ({
       fontWeight: fontWeight,
       padding: calculatePadding(),
       lineHeight: fontSize ? `${parseInt(fontSize.toString()) * 1.4}px` : undefined,
+      fontStyle: italic ? 'italic' : undefined,
     };
 
     if (gradient) {
