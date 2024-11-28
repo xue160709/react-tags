@@ -33,5 +33,13 @@
     "rollup": "^2.60.0",
     "rollup-plugin-postcss": "^4.0.0",
     "typescript": "^4.5.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xue160709/react-tags"
+  },
+  "bugs": {
+    "url": "https://github.com/xue160709/react-tags/issues"
+  },
+  "homepage": "https://github.com/xue160709/react-tags"
 }
