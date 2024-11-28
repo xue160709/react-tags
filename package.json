@@ -1,7 +1,7 @@
 {
-  "name": "@xue160709/react-tag",
+  "name": "@xue160709/react-tags",
   "version": "1.0.0",
-  "description": "A highly customizable React tag component",
+  "description": "A modern React tags component",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
@@ -12,8 +12,26 @@
     "build": "rollup -c",
     "prepare": "npm run build"
   },
+  "keywords": [
+    "react",
+    "tag",
+    "component",
+    "ui"
+  ],
+  "author": "xue160709",
+  "license": "MIT",
   "peerDependencies": {
-    "react": ">=16.8.0",
+    "react": "^18.3.1",
     "react-dom": ">=16.8.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^21.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.0",
+    "@rollup/plugin-typescript": "^8.3.0",
+    "@types/react": "^17.0.83",
+    "postcss": "^8.4.0",
+    "rollup": "^2.60.0",
+    "rollup-plugin-postcss": "^4.0.0",
+    "typescript": "^4.5.0"
   }
 }

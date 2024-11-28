@@ -15,7 +15,7 @@ type GradientConfig = {
   direction?: string;
 };
 
-interface TagProps {
+export interface TagProps {
   text: string;
   color?: ColorOption;
   customColor?: {
