@@ -25,7 +25,9 @@ export default {
     postcss({
       extensions: ['.css'],
       minimize: true,
-      extract: 'styles.css',
+      modules: false,
+      inject: true,
+      extract: false,
     }),
   ],
 }; 

@@ -120,3 +120,7 @@ The component includes built-in accessibility features:
 MIT © [2024] [xuezhirong]
 
 See [LICENSE](./LICENSE) file for more details.
+
+## 样式导入
+
+你可以通过以下方式之一导入样式：
