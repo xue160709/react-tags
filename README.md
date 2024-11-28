@@ -1,36 +1,120 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# React Tag Component
 
-## Getting Started
+A highly customizable and accessible React tag component that supports multiple styles, animations, and interactions.
 
-First, run the development server:
+## Features
+
+- 🎨 Multiple color schemes and gradient options
+- 🔄 Interactive effects (scale, shine, pointer)
+- ✨ Custom styling support
+- 🎯 Accessibility features
+- 📱 Responsive sizing
+- ❌ Closeable tags with fade-out animation
+- 🖼️ Icon support
+- 🛠️ Highly customizable (border, shadow, opacity, etc.)
+
+## Installation
 
 ```bash
-npm run dev
+npm install @your-package/react-tag
 # or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+yarn add @your-package/react-tag
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Basic Usage
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```tsx
+import { Tag } from '@your-package/react-tag';
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+function App() {
+  return (
+    <div>
+      <Tag text="Basic Tag" />
+      <Tag text="Closeable" onClose={() => console.log('Tag closed')} />
+      <Tag text="Custom Color" color="custom" customColor="#ff0000" />
+    </div>
+  );
+}
+```
 
-## Learn More
+## Examples
 
-To learn more about Next.js, take a look at the following resources:
+### Color Variants
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```tsx
+<>
+  <Tag text="Blue Tag" color="blue" />
+  <Tag text="Green Tag" color="green" />
+  <Tag text="Red Tag" color="red" />
+  <Tag text="Custom" color="custom" customColor={{ text: '#ff0000', background: '#fff' }} />
+</>
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Gradient Tags
 
-## Deploy on Vercel
+```tsx
+<Tag 
+  text="Gradient" 
+  gradient={{
+    from: '#4F46E5',
+    to: '#E114E5',
+    direction: '45deg'
+  }}
+/>
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Interactive Tags
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```tsx
+<>
+  <Tag text="Click me" onClick={() => alert('Clicked!')} interactive="pointer" />
+  <Tag text="Hover Scale" interactive="scale" />
+  <Tag text="Multiple Effects" interactive={['scale', 'shine']} />
+</>
+```
+
+### With Icons
+
+```tsx
+<Tag 
+  text="With Icon"
+  icon={<StarIcon />}
+  color="blue"
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| text | string | - | The text content of the tag |
+| color | ColorOption | 'blue' | Predefined color scheme |
+| customColor | string \| { text?: string; background?: string; } | - | Custom color configuration |
+| onClose | () => void | - | Callback when tag is closed |
+| size | 'small' \| 'medium' \| 'large' | 'medium' | Size of the tag |
+| icon | ReactNode | - | Icon element to display |
+| onClick | () => void | - | Click handler |
+| interactive | ('none' \| 'pointer' \| 'scale' \| 'shine')[] \| string | 'none' | Interactive effects |
+| fadeOut | boolean | false | Enable fade out animation on close |
+| gradient | { from: string; to: string; direction?: string; } | - | Gradient configuration |
+| shadow | boolean | false | Enable drop shadow |
+| opacity | number | 100 | Tag opacity (0-100) |
+
+## Accessibility
+
+The component includes built-in accessibility features:
+- Proper ARIA roles and labels
+- Keyboard navigation support
+- Focus management
+- Screen reader friendly
+
+## Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## License
+
+MIT © [Your Name]
