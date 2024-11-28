@@ -265,61 +265,135 @@ export default function Home() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-xl font-semibold mb-4">渐变效果标签</h2>
+          <h2 className="text-xl font-semibold mb-4">自定义渐变效果标签</h2>
           <div className="flex flex-wrap gap-2">
             <Tag 
-              text="蓝色渐变" 
-              color="gradient-blue"
+              text="自定义蓝色渐变" 
+              gradient={{
+                from: '#1677ff',
+                to: '#69b1ff',
+                direction: '45deg'
+              }}
               clickable
             />
             <Tag 
               text="紫色渐变" 
-              color="gradient-purple"
+              gradient={{
+                from: '#722ED1',
+                to: '#B37FEB',
+                direction: 'to right'
+              }}
               clickable
             />
             <Tag 
-              text="绿色渐变" 
-              color="gradient-green"
+              text="日落渐变" 
+              gradient={{
+                from: '#FF4D4F',
+                to: '#FFA940',
+                direction: '135deg'
+              }}
               clickable
             />
             <Tag 
-              text="晚霞渐变" 
-              color="gradient-sunset"
-              clickable
-            />
-            <Tag 
-              text="海洋渐变" 
-              color="gradient-ocean"
+              text="极光渐变" 
+              gradient={{
+                from: '#13C2C2',
+                to: '#36CFC9',
+                direction: 'to bottom right'
+              }}
               clickable
             />
           </div>
         </section>
 
         <section className="mb-8">
-          <h2 className="text-xl font-semibold mb-4">渐变标签组合效果</h2>
+          <h2 className="text-xl font-semibold mb-4">渐变组合效果</h2>
           <div className="flex flex-wrap gap-2">
             <Tag 
               text="可关闭渐变" 
-              color="gradient-blue"
+              gradient={{
+                from: '#1677ff',
+                to: '#69b1ff'
+              }}
               onClose={() => alert('关闭')}
             />
             <Tag 
               text="带图标渐变" 
-              color="gradient-purple"
+              gradient={{
+                from: '#722ED1',
+                to: '#B37FEB'
+              }}
               icon={<FiStar className="mr-1" />}
               clickable
             />
             <Tag 
               text="大尺寸渐变" 
-              color="gradient-sunset"
+              gradient={{
+                from: '#FF4D4F',
+                to: '#FFA940'
+              }}
               size="large"
               clickable
             />
+          </div>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-xl font-semibold mb-4">字体大小与粗细</h2>
+          <div className="flex flex-wrap gap-2 items-center">
             <Tag 
-              text="提示渐变" 
-              color="gradient-ocean"
-              tooltip="渐变效果标签"
-              clickable
+              text="小字体标签" 
+              color="blue" 
+              fontSize="12px"
+            />
+            <Tag 
+              text="默认字体标签" 
+              color="green" 
+            />
+            <Tag 
+              text="中等字体" 
+              color="purple" 
+              fontSize="16px"
+            />
+            <Tag 
+              text="大字体标签" 
+              color="pink" 
+              fontSize="18px"
+            />
+            <Tag 
+              text="超大字体" 
+              color="orange" 
+              fontSize="24px"
+              fontWeight={600}
+            />
+            <Tag 
+              text="带图标大字" 
+              color="teal"
+              fontSize="20px"
+              fontWeight={700}
+              icon={<FiStar />}
+            />
+          </div>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-xl font-semibold mb-4">组合字体效果</h2>
+          <div className="flex flex-wrap gap-2 items-center">
+            <Tag 
+              text="渐变大字" 
+              gradient={{
+                from: '#1677ff',
+                to: '#69b1ff'
+              }}
+              fontSize="20px"
+              fontWeight={600}
+            />
+            <Tag 
+              text="可关闭大字" 
+              color="purple"
+              fontSize="18px"
+              fontWeight={500}
+              onClose={() => alert('关闭')}
             />
           </div>
         </section>

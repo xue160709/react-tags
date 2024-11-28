@@ -8,6 +8,12 @@ type ColorOption =
   | 'gradient-blue' | 'gradient-purple' | 'gradient-green' 
   | 'gradient-sunset' | 'gradient-ocean';
 
+type GradientConfig = {
+  from: string;
+  to: string;
+  direction?: string;
+};
+
 interface TagProps {
   text: string;
   color?: ColorOption;
@@ -23,6 +29,9 @@ interface TagProps {
   tooltip?: string;
   borderRadius?: number | string;
   fadeOut?: boolean;
+  gradient?: GradientConfig;
+  fontSize?: string | number;
+  fontWeight?: string | number;
 }
 
 const Tag: React.FC<TagProps> = ({ 
@@ -39,7 +48,10 @@ const Tag: React.FC<TagProps> = ({
   onClick,
   tooltip,
   borderRadius = '4px',
-  fadeOut = false
+  fadeOut = false,
+  gradient,
+  fontSize,
+  fontWeight,
 }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [isFading, setIsFading] = useState(false);
@@ -76,19 +88,51 @@ const Tag: React.FC<TagProps> = ({
     return classes.join(' ');
   };
 
-  const customStyle = {
-    ...(color === 'custom' && customColor ? {
-      backgroundColor: `${customColor}20`,
-      color: customColor,
-      border: `1px solid ${customColor}40`,
-    } : {}),
-    borderRadius: borderRadius
+  const getCustomStyle = () => {
+    const calculatePadding = () => {
+      if (!fontSize) return undefined;
+      
+      const fontSizeNum = parseInt(fontSize.toString());
+      if (fontSizeNum <= 12) return '2px 8px';
+      if (fontSizeNum <= 14) return '3px 10px';
+      if (fontSizeNum <= 16) return '4px 12px';
+      if (fontSizeNum <= 18) return '6px 14px';
+      return '8px 16px';
+    };
+
+    const baseStyle: React.CSSProperties = {
+      borderRadius: borderRadius,
+      fontSize: fontSize,
+      fontWeight: fontWeight,
+      padding: calculatePadding(),
+      lineHeight: fontSize ? `${parseInt(fontSize.toString()) * 1.4}px` : undefined,
+    };
+
+    if (gradient) {
+      return {
+        ...baseStyle,
+        background: `linear-gradient(${gradient.direction || '45deg'}, ${gradient.from}, ${gradient.to})`,
+        color: 'white',
+        border: 'none',
+      };
+    }
+
+    if (color === 'custom' && customColor) {
+      return {
+        ...baseStyle,
+        backgroundColor: `${customColor}20`,
+        color: customColor,
+        border: `1px solid ${customColor}40`,
+      };
+    }
+
+    return baseStyle;
   };
 
   return (
     <span 
       className={getTagClassName()}
-      style={customStyle}
+      style={getCustomStyle()}
       role={role}
       aria-label={ariaLabel || text}
       tabIndex={tabIndex}
