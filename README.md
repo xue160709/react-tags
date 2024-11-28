@@ -16,15 +16,15 @@ A highly customizable and accessible React tag component that supports multiple 
 ## Installation
 
 ```bash
-npm install @your-package/react-tag
+npm install @xue160709/react-tags
 # or
-yarn add @your-package/react-tag
+yarn add @xue160709/react-tags
 ```
 
 ## Basic Usage
 
 ```tsx
-import { Tag } from '@your-package/react-tag';
+import { Tag } from '@xue160709/react-tags';
 
 function App() {
   return (
@@ -117,7 +117,7 @@ The component includes built-in accessibility features:
 
 ## License
 
-MIT © [2024] [xuezhirong]
+MIT © [2024] [xue160709]
 
 See [LICENSE](./LICENSE) file for more details.
 
