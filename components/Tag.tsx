@@ -4,6 +4,7 @@ import './Tag.css';
 type ColorOption = 
   'blue' | 'green' | 'red' | 'yellow' | 'purple' 
   | 'indigo' | 'pink' | 'gray' | 'orange' | 'teal'
+  | 'black' | 'white'
   | 'custom'
   | 'gradient-blue' | 'gradient-purple' | 'gradient-green' 
   | 'gradient-sunset' | 'gradient-ocean';
@@ -17,14 +18,16 @@ type GradientConfig = {
 interface TagProps {
   text: string;
   color?: ColorOption;
-  customColor?: string;
+  customColor?: {
+    text?: string;
+    background?: string;
+  } | string;
   onClose?: () => void;
   role?: string;
   ariaLabel?: string;
   tabIndex?: number;
   size?: 'small' | 'medium' | 'large';
   icon?: React.ReactNode;
-  clickable?: boolean;
   onClick?: () => void;
   tooltip?: string;
   borderRadius?: number | string;
@@ -35,6 +38,9 @@ interface TagProps {
   italic?: boolean;
   borderWidth?: number | string;
   noBorder?: boolean;
+  opacity?: number;
+  shadow?: boolean;
+  interactive?: ('none' | 'pointer' | 'scale' | 'shine')[] | 'none' | 'pointer' | 'scale' | 'shine';
 }
 
 const Tag: React.FC<TagProps> = ({ 
@@ -47,7 +53,6 @@ const Tag: React.FC<TagProps> = ({
   tabIndex = 0,
   size = 'medium',
   icon,
-  clickable = false,
   onClick,
   tooltip,
   borderRadius = '4px',
@@ -58,6 +63,9 @@ const Tag: React.FC<TagProps> = ({
   italic = false,
   borderWidth,
   noBorder = false,
+  opacity = 100,
+  shadow = false,
+  interactive = 'none',
 }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [isFading, setIsFading] = useState(false);
@@ -85,12 +93,23 @@ const Tag: React.FC<TagProps> = ({
     if (color !== 'custom') {
       classes.push(`tag-${color}`);
     }
-    if (clickable) {
-      classes.push('tag-clickable');
-    }
     if (isFading) {
       classes.push('tag-fade-out');
     }
+    
+    if (interactive !== 'none') {
+      classes.push('tag-interactive');
+      if (Array.isArray(interactive)) {
+        interactive.forEach(effect => {
+          if (effect === 'scale') classes.push('tag-scale');
+          if (effect === 'shine') classes.push('tag-shine');
+        });
+      } else {
+        if (interactive === 'scale') classes.push('tag-scale');
+        if (interactive === 'shine') classes.push('tag-shine');
+      }
+    }
+    
     return classes.join(' ');
   };
 
@@ -122,6 +141,8 @@ const Tag: React.FC<TagProps> = ({
       border: noBorder ? 'none' : undefined,
       borderWidth: !noBorder && borderWidth ? borderWidth : undefined,
       '--close-button-size': calculateCloseButtonSize(),
+      opacity: opacity / 100,
+      boxShadow: shadow ? '0 2px 4px rgba(0, 0, 0, 0.1)' : undefined,
     } as React.CSSProperties;
 
     if (gradient) {
@@ -134,11 +155,14 @@ const Tag: React.FC<TagProps> = ({
     }
 
     if (color === 'custom' && customColor) {
+      const textColor = typeof customColor === 'string' ? customColor : customColor.text;
+      const bgColor = typeof customColor === 'string' ? 'white' : (customColor.background || 'white');
+      
       return {
         ...baseStyle,
-        backgroundColor: 'white',
-        color: customColor,
-        border: noBorder ? 'none' : `${borderWidth || 1}px solid ${customColor}40`,
+        backgroundColor: bgColor,
+        color: textColor,
+        border: noBorder ? 'none' : `${borderWidth || 1}px solid ${textColor}40`,
         boxShadow: noBorder ? 'none' : undefined,
       };
     }
@@ -153,12 +177,17 @@ const Tag: React.FC<TagProps> = ({
       role={role}
       aria-label={ariaLabel || text}
       tabIndex={tabIndex}
-      onClick={clickable ? onClick : undefined}
+      onClick={(e) => {
+        if (onClick) {
+          e.stopPropagation();
+          onClick();
+        }
+      }}
       onKeyDown={(e) => {
         if (onClose && (e.key === 'Backspace' || e.key === 'Delete')) {
           handleClose();
         }
-        if (clickable && e.key === 'Enter' && onClick) {
+        if (onClick && e.key === 'Enter') {
           onClick();
         }
       }}
