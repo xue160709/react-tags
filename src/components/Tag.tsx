@@ -16,7 +16,7 @@ type GradientConfig = {
 };
 
 export interface TagProps {
-  text: string;
+  text?: string;
   color?: ColorOption;
   customColor?: {
     text?: string;
@@ -28,7 +28,7 @@ export interface TagProps {
   tabIndex?: number;
   size?: 'small' | 'medium' | 'large';
   icon?: React.ReactNode;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   tooltip?: string;
   borderRadius?: number | string;
   fadeOut?: boolean;
@@ -41,12 +41,16 @@ export interface TagProps {
   opacity?: number;
   shadow?: boolean;
   interactive?: ('none' | 'pointer' | 'scale' | 'shine')[] | 'none' | 'pointer' | 'scale' | 'shine';
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
 }
 
 const Tag: React.FC<TagProps> = ({ 
   text, 
+  children,
   color = 'blue', 
   customColor, 
+  style,
   onClose,
   role = 'status',
   ariaLabel,
@@ -143,6 +147,9 @@ const Tag: React.FC<TagProps> = ({
       '--close-button-size': calculateCloseButtonSize(),
       opacity: opacity / 100,
       boxShadow: shadow ? '0 2px 4px rgba(0, 0, 0, 0.1)' : undefined,
+      marginRight: '4px',
+      marginBottom: '4px',
+      ...style,
     } as React.CSSProperties;
 
     if (gradient) {
@@ -170,31 +177,32 @@ const Tag: React.FC<TagProps> = ({
     return baseStyle;
   };
 
+  const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (onClick) {
+      onClick(event);
+    }
+  };
+
   return (
     <span 
       className={getTagClassName()}
       style={getCustomStyle()}
       role={role}
-      aria-label={ariaLabel || text}
+      aria-label={ariaLabel || text || (typeof children === 'string' ? children : undefined)}
       tabIndex={tabIndex}
-      onClick={(e) => {
-        if (onClick) {
-          e.stopPropagation();
-          onClick();
-        }
-      }}
+      onClick={handleClick}
       onKeyDown={(e) => {
         if (onClose && (e.key === 'Backspace' || e.key === 'Delete')) {
           handleClose();
         }
         if (onClick && e.key === 'Enter') {
-          onClick();
+          onClick(e as unknown as React.MouseEvent<HTMLDivElement, MouseEvent>);
         }
       }}
       title={tooltip}
     >
       {icon && <span className="tag-icon">{icon}</span>}
-      {text}
+      {children || text}
       {onClose && (
         <button 
           onClick={(e) => {
